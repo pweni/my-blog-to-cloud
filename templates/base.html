@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <!-- 预留网站标题位置 -->
+    <title>{% block title %}{% endblock %}</title>
+    <!-- 引入bootstrap的css文件 -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <!-- 引入monikai.css -->
+    <link rel="stylesheet" href="{% static 'md_css/monokai.css' %}">
+</head>
+<body>
+<!-- 引入导航栏 -->
+{% include 'header.html' %}
+<!-- 预留具体页面的位置 -->
+{% block content %}
+{% endblock %}
+<!-- 引入注脚 -->
+{% include 'footer.html' %}
+<!-- bootstrap.js 依赖 jquery.js 和popper.js，因此在这里引入 且jquery先于popper -->
+<script src="{% static 'jquery/jquery-3.3.1.js' %}"></script>
+
+<!--
+    popper.js 采用 cdn 远程引入，意思是你不需要把它下载到本地。
+    在实际的开发中推荐静态文件尽量都使用 cdn 的形式。
+    教程采用本地引入是为了让读者了解静态文件本地部署的流程。
+-->
+<script src="{% static 'popper/popper.min.js' %}"></script>
+
+<!-- 引入bootstrap的js文件 -->
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- 引入layer弹窗 -->
+<script src="{% static 'layer/layer.js' %}"></script>
+</body>
+</html>
